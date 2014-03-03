@@ -23,3 +23,6 @@ if [ -n "$GOROOT" ]; then
 		PATH=$GOROOT/bin:$PATH
 	fi
 fi
+if [ -d "${HOME}/local/go_appengine" ]; then
+	PATH="${HOME}/local/go_appengine":${PATH}
+fi
