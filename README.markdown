@@ -9,3 +9,4 @@ Some of it has been refactored just for this collection (such as the
 ## Stuff that's in here now.
 
  * `zsh` profile
+ * `vim` configuration
