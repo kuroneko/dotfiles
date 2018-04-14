@@ -3,6 +3,8 @@ DOTFILES=\
 	 .zsh-comp \
 	 .zshrc \
 	 .profile.d \
+	 .devenv \
+
 
 CONFIGS=\
 	sublime-text-3 \
