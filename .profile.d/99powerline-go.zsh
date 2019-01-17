@@ -1,11 +1,12 @@
-POWERLINE_GO_CMD="$(which powerline-go)"
-if [ "$?" -eq 0 ]; then
+if POWERLINE_GO_CMD="$(which powerline-go)"; then
   export POWERLINE_GO_CMD
+  export POWERLINE_MODULES=(host cwd git exit root)
+  export POWERLINE_PRIORITY=(root host cwd exit git)
 
-  export POWERLINE_OPTS=(-colorize-hostname -cwd-max-depth 3 -max-width "${COLUMNS}" -modules host,cwd,git,exit,root -priority root,host,cwd,exit,git)
+  export POWERLINE_OPTS=(-colorize-hostname -cwd-max-depth 3 -max-width "${COLUMNS}")
 
   function powerline_precmd() {
-    PS1="$(${POWERLINE_GO_CMD} -error $? ${POWERLINE_OPTS[@]} -shell zsh)"
+    PS1="$(${POWERLINE_GO_CMD} -error $? "${POWERLINE_OPTS[@]}" -modules "${(j:,:)POWERLINE_MODULES}" -priority "${(j:,:)POWERLINE_PRIORITY}" -shell zsh)"
   }
 
   function install_powerline_precmd() {

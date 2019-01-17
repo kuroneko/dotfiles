@@ -5,7 +5,7 @@ if [ -z "${PYENV_ROOT}" ]; then
 	fi
 fi
 if [ -n "${PYENV_ROOT}" ]; then
-	PATH="${PYENV_ROOT}/bin":"${PATH}"
+	PATH="${PYENV_ROOT}/bin:${PATH}"
 fi
 if which pyenv > /dev/null; then
   eval "$(pyenv init -)"

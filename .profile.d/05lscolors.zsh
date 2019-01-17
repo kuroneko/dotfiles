@@ -1,7 +1,7 @@
 OS=$(uname -s)
 case "$OS" in
 Linux)
-	eval `dircolors`
+	eval "$(dircolors)"
 	LS_OPTIONS='--color=auto -p'
 	;;
 Darwin)
