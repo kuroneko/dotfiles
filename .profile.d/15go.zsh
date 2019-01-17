@@ -1,12 +1,12 @@
 if [ -z "$GOROOT" ]; then
  	# no goroot set?  try to find it!
-	if [ -d $HOME/go ]; then
+	if [ -x $HOME/go/bin/go ]; then
 		GOROOT=$HOME/go
-	elif [ -d $HOME/local/go ]; then
+	elif [ -x $HOME/local/go/bin/go ]; then
 		GOROOT=$HOME/local/go
-	elif [ -d /usr/local/go ]; then
+	elif [ -x /usr/local/go/bin/go ]; then
 		GOROOT=/usr/local/go
-	elif [ -d /opt/go ]; then
+	elif [ -x /opt/go/bin/go ]; then
 		GOROOT=/opt/go
 	fi
 	if [ -n "$GOROOT" ]; then
@@ -22,7 +22,13 @@ if [ -n "$GOROOT" ]; then
 		export GOROOT
 		PATH=$GOROOT/bin:$PATH
 	fi
+
+	# finally, if ${HOME}/go/bin exists, add it to the path.
+	if [ "${GOROOT}" != "${HOME}/go" ] && [ -d "${HOME}/go/bin" ]; then
+		PATH="${HOME}/go/bin:${PATH}"
+	fi
 fi
 if [ -d "${HOME}/local/go_appengine" ]; then
 	PATH="${HOME}/local/go_appengine":${PATH}
 fi
+
