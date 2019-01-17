@@ -29,9 +29,9 @@ colors
 PS1='%n@%m:%~%(!.#.$) '
 export PS1
 
-if [ -d .profile.d ]; then
-	for script in .profile.d/*.zsh; do
-		. $script
+if [ -d "${HOME}/.profile.d" ]; then
+	for script in "${HOME}/.profile.d/"*.zsh; do
+		. "$script"
 	done
 fi
 
